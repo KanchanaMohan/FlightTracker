@@ -16,11 +16,11 @@ Input file used for testing: \FlightTracker\Input.txt
 
 #**Tools for running the project:**
 
-jre 1.80.0
+-jre 1.80.0
 
-gradle 3.4.1
+-gradle 3.4.1
 
-JUnit
+-JUnit 4.8.1
 
 
 #**Steps for executing the project:**
