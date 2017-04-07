@@ -29,15 +29,15 @@ $ gradle build
  
 3.Execute the following command from the project directory (FlightTracker) for building the project
 
-$ gradle run -PInputFilePath="['file_path']"
+$ gradle run -PInputFilePath="['input_file_path']"
 
-example file_path: F:/Input.txt
+example input_file_path: F:/Input.txt
 
 4.Output will be printed in the console and also logged into an Output file located in the \FlightTracker\Output
 
 #**Known Issues/ Problems:**
 
-1. The unit testing framework is very minimally done, I hope to complete and upload more of that in a further release.
+1. The unit testing framework is done, however testing is only very minimally done (only for ConnectionPriceTest.java), I would like to do intensive unit verification for the class and also extend it to other classes aiming at a test coverage of 100%. I hope to achieve that in a further release.
 
 2. The application is very sensitive to the formatting of the input text (not tolerant enough to white spaces too), this shall be corrected in a further release.
 
@@ -51,4 +51,4 @@ Find all conenctions --> Find all connections
 
 1. The number of Airports/Stop over destinations is limited to a few and will not increase significantly. In that case more efficient (with less complexity) searching algorithms will be demanded.
 
-2. The application assumes, connections information provided is only one way information i.e. NUE-FRA-60 is the connection from NUE to FRA and no connection from FRA to NUE exists, unless explicitly mentioned.
+2. Connections information provided is only one way information i.e. NUE-FRA-60 is the connection from NUE to FRA and no connection from FRA to NUE exists, unless explicitly mentioned.
