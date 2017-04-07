@@ -1,6 +1,6 @@
 #**Project Information:**
 As part of Addidas coding challenge, I am pleased to submit version 1.0 of FlightTracker implemented as per the requirements specified at:
-https://bitbucket.org/adigsd/backend-flitetrakr
+[Coding Challenge Link](https://bitbucket.org/adigsd/backend-flitetrakr)
 
 #**Directory Structure:**
 Source files located at: \FlightTracker\src\main\java\
@@ -12,10 +12,15 @@ gradle 3.4.1
 JUnit
 
 #**Steps for executing the project:**
-1)Unzip the FlightTracker.zip
-2)Execute the following command from the project directory (FlightTracker) for building the project
+1.Unzip the FlightTracker.zip
+2.Execute the following command from the project directory (FlightTracker) for building the project
 $ gradle build 
-3)Execute the following command from the project directory (FlightTracker) for building the project
+3.Execute the following command from the project directory (FlightTracker) for building the project
 $ gradle run -PInputFilePath="['file_path']"
 example file_path: F:/Input.txt
-4)Output will be printed in the console and also logged into an Output file located in the \FlightTracker\Output
+4.Output will be printed in the console and also logged into an Output file located in the \FlightTracker\Output
+
+#**Known Issues/ Problems:**
+
+
+#**Assumptions**
