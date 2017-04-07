@@ -47,9 +47,9 @@ example input_file_path: F:/Input.txt
 
 3. In the example queries provided, there was spelling mistakes, the queries were framed correcting the mistakes. 
 
-i.e How mand different connections --> How many different connections
+   i.e How mand different connections --> How many different connections
 
-Find all conenctions --> Find all connections
+       Find all conenctions --> Find all connections
 
 #**Assumptions**
 
