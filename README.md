@@ -12,6 +12,8 @@ Test cases (Basic level done) located at: \FlightTracker\src\test\java
 
 Test reports at : \FlightTracker\build\reports\tests\test
 
+Input file used for testing: \FlightTracker\Input.txt
+
 #**Tools for running the project:**
 
 jre 1.80.0
