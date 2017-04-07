@@ -6,17 +6,22 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import Helper.QueryHelper;
+import Helper.PrintHelper;
 import Processors.Query;
-import Processors.QueryFactory;
 
+/**
+ * 
+ * Processes AllConnections query
+ *  
+ * @author Kanchana Mohan
+ */
 public class AllConnections extends Query {
 	private final static Logger LOGGER = Logger.getLogger(AllConnections.class.getName());
 	private final static String CLASS_NAME = AllConnections.class.getName();
-	
+
 	Integer amount = 0;
 	String source = "";
 	String destination = "";
-	
 
 	public AllConnections(String strSource, String strDestination, Integer strAmount) {
 		amount = strAmount;
@@ -28,12 +33,12 @@ public class AllConnections extends Query {
 	 * Method to process input and print output
 	 */
 	public void process(Map<String, String> conPriceMap, String connNames, int index) {
-        String methodName = "process";
-        LOGGER.entering(CLASS_NAME, methodName);
+		String methodName = "process";
+		LOGGER.entering(CLASS_NAME, methodName);
 		String allConnections = getConnections(conPriceMap, connNames, source, destination);
 		String output = "#" + index + ":" + "" + allConnections;
-		QueryHelper queryHelper = new QueryHelper();
-		queryHelper.print(output);
+		PrintHelper print = PrintHelper.getInstance();
+		print.output(output);
 		LOGGER.exiting(CLASS_NAME, methodName);
 
 	}
@@ -47,13 +52,13 @@ public class AllConnections extends Query {
 	 * @param strDestination
 	 * @return
 	 */
-	String getConnections(Map<String, String> conPriceMap, String connNames, String strSource, String strDestination) {
+	public String getConnections(Map<String, String> conPriceMap, String connNames, String strSource, String strDestination) {
 		String methodName = "getConnections";
-	    LOGGER.entering(CLASS_NAME, methodName);
+		LOGGER.entering(CLASS_NAME, methodName);
 		String allRoutes = "";
 		QueryHelper queryHelper = new QueryHelper();
 		Map<String, Integer> unSortedMap = new HashMap<String, Integer>();
-		try{
+		try {
 			List<List<String>> routes = queryHelper.getAllConnections(connNames, strSource, strDestination);
 
 			if (null != routes) {
@@ -81,10 +86,10 @@ public class AllConnections extends Query {
 			} else {
 				allRoutes = "No such connection found!";
 			}
-		}catch(Exception e){
-			LOGGER.severe("Exception occured in method"+methodName+"in class"+CLASS_NAME+""+e);
+		} catch (Exception e) {
+			LOGGER.severe("Exception occured in method" + methodName + "in class" + CLASS_NAME + "" + e);
 		}
-		
+
 		LOGGER.exiting(CLASS_NAME, methodName);
 		return allRoutes;
 

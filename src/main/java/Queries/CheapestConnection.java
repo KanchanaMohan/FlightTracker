@@ -8,8 +8,15 @@ import java.util.logging.Logger;
 
 import Constant.QueryConstants;
 import Helper.QueryHelper;
+import Helper.PrintHelper;
 import Processors.Query;
 
+/**
+ * 
+ * Processes CheapestConnection query
+ *  
+ * @author Kanchana Mohan
+ */
 public class CheapestConnection extends Query {
 
 	private final static Logger LOGGER = Logger.getLogger(CheapestConnection.class.getName());
@@ -28,18 +35,18 @@ public class CheapestConnection extends Query {
 		LOGGER.entering(CLASS_NAME, methodName);
 		String cheapestConnect = getCheapestConnection(conPriceMap, connNames, source, destination);
 		String output = "#" + index + ":" + "" + cheapestConnect;
-		QueryHelper queryHelper = new QueryHelper();
-		queryHelper.print(output);
+		PrintHelper print = PrintHelper.getInstance();
+		print.output(output);
 		LOGGER.exiting(CLASS_NAME, methodName);
 	}
 
-	String getCheapestConnection(Map<String, String> conPriceMap, String connNames, String strSource, String strDestination) {
+	public String getCheapestConnection(Map<String, String> conPriceMap, String connNames, String strSource, String strDestination) {
 		String methodName = "getCheapestConnection";
 		LOGGER.entering(CLASS_NAME, methodName);
 		String cheapestConnect = "";
 		QueryHelper queryHelper = new QueryHelper();
 		Map<String, Integer> unSortedMap = new HashMap<String, Integer>();
-		try{
+		try {
 			List<List<String>> routes = queryHelper.getAllConnections(connNames, strSource, strDestination);
 			if (null != routes) {
 				for (List<String> route : routes) {
@@ -55,24 +62,28 @@ public class CheapestConnection extends Query {
 					unSortedMap.put(connectionPath, new Integer(price));
 				}
 				Map<String, Integer> sortedMapAsc = queryHelper.getSortedConncetion(unSortedMap);
-				if(null != sortedMapAsc){
-					 String cheapestWay = "";
-					 Integer cheapestPrice = 0;
-					 for (Entry<String, Integer> entry : sortedMapAsc.entrySet()) {
-						   cheapestWay = entry.getKey();
-						   cheapestPrice = entry.getValue();
-						   break;
-						}
-					 cheapestConnect = cheapestWay+"-"+cheapestPrice;
-				 }
+				if (null != sortedMapAsc) {
+					String cheapestWay = "";
+					Integer cheapestPrice = 0;
+					for (Entry<String, Integer> entry : sortedMapAsc.entrySet()) {
+						cheapestWay = entry.getKey();
+						cheapestPrice = entry.getValue();
+						break;
+					}
+					if (null == cheapestWay || cheapestWay.equals("") || "" == cheapestWay) {
+						cheapestConnect = QueryConstants.NOCONNECTION;
+					} else {
+						cheapestConnect = cheapestWay + "-" + cheapestPrice;
+					}
+
+				}
 			} else {
 				cheapestConnect = QueryConstants.NOCONNECTION;
 			}
+		} catch (Exception e) {
+			LOGGER.severe("Exception occured at method " + methodName + "in" + CLASS_NAME + "" + e);
 		}
-		catch(Exception e){
-			LOGGER.severe("Exception occured at method "+methodName+"in"+CLASS_NAME+""+e);
-		}
-		
+
 		LOGGER.exiting(CLASS_NAME, methodName);
 		return cheapestConnect;
 

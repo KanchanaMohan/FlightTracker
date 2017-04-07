@@ -2,13 +2,15 @@
 
 #**Project Information:**
 
-As part of Addidas coding challenge, I am pleased to submit FlightTracker (v1.0) implemented as per the requirements specified at[Coding Challenge Link](https://bitbucket.org/adigsd/backend-flitetrakr)
+As part of Addidas coding challenge, I am pleased to submit FlightTracker (v1.0) implemented as per the requirements specified at [Coding Challenge Link](https://bitbucket.org/adigsd/backend-flitetrakr)
 
 #**Directory Structure:**
 
 Source files located at: \FlightTracker\src\main\java\
 
 Test cases (Basic level done) located at: \FlightTracker\src\test\java
+
+Test reports at : \FlightTracker\build\reports\tests\test
 
 #**Tools for running the project:**
 
@@ -37,7 +39,7 @@ example input_file_path: F:/Input.txt
 
 #**Known Issues/ Problems:**
 
-1. The unit testing framework is done, however testing is only very minimally done (only for ConnectionPriceTest.java), I would like to do intensive unit verification for the class and also extend it to other classes aiming at a test coverage of 100%. I hope to achieve that in a further release.
+1. The unit testing framework is done, however testing is only very minimally done (only for ConnectionPriceTest.java), I would like to do intensive unit verification for the class and also extend it to other classes aiming at a test coverage of 100%. I hope to achieve this in a further release.
 
 2. The application is very sensitive to the formatting of the input text (not tolerant enough to white spaces too), this shall be corrected in a further release.
 
