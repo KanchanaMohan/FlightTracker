@@ -10,7 +10,7 @@ Source files located at: \FlightTracker\src\main\java\
 
 Test cases (Basic level done) located at: \FlightTracker\src\test\java
 
-Test reports at : \FlightTracker\build\reports\tests\test
+Test reports at : \FlightTracker\build\reports\tests\test (will be generated while building)
 
 Input file used for testing: \FlightTracker\Input.txt
 
