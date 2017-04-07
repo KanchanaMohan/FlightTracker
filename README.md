@@ -49,7 +49,7 @@ example input_file_path: F:/Input.txt
 
    i.e How mand different connections --> How many different connections
 
-       Find all conenctions --> Find all connections
+   Find all conenctions --> Find all connections
 
 #**Assumptions**
 
