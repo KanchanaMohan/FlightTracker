@@ -1,0 +1,67 @@
+package Queries;
+
+import java.util.HashMap;
+
+import java.util.List;
+import java.util.Map;
+
+import Constant.QueryConstants;
+import Helper.QueryHelper;
+import Processors.Query;
+
+public class CheapestConnection extends Query {
+
+    String source = "";
+    String destination = "";
+    String quesNo = "";
+    public CheapestConnection(String strSource,String strDestination){
+    	source = strSource;
+    	destination = strDestination;
+    }
+    
+	@Override
+	public void process(Map<String, String> conPriceMap,String connNames,int i) {
+		
+		String cheapestConnect = getCheapestConnection(conPriceMap,connNames,source,destination);
+		String output = "#"+i+":"+""+cheapestConnect;
+		QueryHelper queryHelper = new QueryHelper();
+		queryHelper.print(output);
+	}
+	
+	String  getCheapestConnection(Map<String, String> conPriceMap, String connNames, String strSource,String strDestination){
+		 String cheapestConnect = "";
+		 QueryHelper queryHelper = new QueryHelper();
+		 Map<String, Integer> unSortedMap = new HashMap<String, Integer>();
+		 List<List<String>> routes = queryHelper.getAllConnections(connNames, strSource, strDestination);
+		 if(null != routes ){
+			 for (List<String> route : routes) {
+				    String connectionPath = "";
+					for (int i=0;i<route.size();i++){
+						if(i==0){
+							connectionPath = route.get(i);
+						}
+						else{
+							connectionPath=connectionPath+"-"+route.get(i);
+						}
+					}
+					String price = queryHelper.getConnectionPrice(conPriceMap, connectionPath);
+					unSortedMap.put(connectionPath, new Integer(price));
+				}
+			 Map<String, Integer> sortedMapAsc = queryHelper.getSortedConncetion(unSortedMap);
+			 Object cheapestWay  = sortedMapAsc.keySet().toArray()[0];
+			 Object cheapestPrice = sortedMapAsc.values().toArray()[0];
+			 cheapestConnect = cheapestWay+"-"+cheapestPrice;
+		 }
+		 else{
+			 cheapestConnect = QueryConstants.NOCONNECTION;
+		 }
+		
+		 return cheapestConnect;
+		   
+	}
+
+	
+	
+	
+
+}

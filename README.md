@@ -2,13 +2,13 @@
 
 #**Project Information:**
 
-As part of Addidas coding challenge, I am pleased to submit version 1.0 of FlightTracker implemented as per the requirements specified at[Coding Challenge Link](https://bitbucket.org/adigsd/backend-flitetrakr)
+As part of Addidas coding challenge, I am pleased to submit FlightTracker (v1.0) implemented as per the requirements specified at[Coding Challenge Link](https://bitbucket.org/adigsd/backend-flitetrakr)
 
 #**Directory Structure:**
 
 Source files located at: \FlightTracker\src\main\java\
 
-Test cases (Partially done) located at: \FlightTracker\src\test\java
+Test cases (Basic level done) located at: \FlightTracker\src\test\java
 
 #**Tools for running the project:**
 
@@ -37,6 +37,7 @@ example file_path: F:/Input.txt
 
 #**Known Issues/ Problems:**
 
+1. The unit testing framework is very minimally done, I hope I can complete and upload more of that in a further release.
 
 
 #**Assumptions**
