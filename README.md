@@ -2,7 +2,9 @@
 
 #**Project Information:**
 
-As part of Addidas coding challenge, I am pleased to submit FlightTracker (v1.1) implemented as per the requirements specified at [Coding Challenge Link](https://bitbucket.org/adigsd/backend-flitetrakr)
+As part of Addidas coding challenge, I am pleased to submit FlightTracker (v1.1).
+Version 1.0 was submitted on Friday 07 April 2017.
+This is implemented as per the requirements specified at [Coding Challenge Link](https://bitbucket.org/adigsd/backend-flitetrakr)
 
 #**Directory Structure:**
 
