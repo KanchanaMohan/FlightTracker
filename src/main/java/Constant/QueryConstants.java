@@ -31,6 +31,6 @@ public class QueryConstants {
 	public final static String OUTPUT_FILE_PATH = "Output/Output.txt";
 	public final static String OUTPUT_ERROR_MSG = "COULD NOT LOG!!";
 	public final static String FILE_MISSING = "ERROR: Input Query File Not Found";
-	public final static String FILE_VERSION = "\tFlightTracker v1.0";
+	public final static String FILE_VERSION = "\tFlightTracker v1.1";
 
 }

@@ -9,12 +9,13 @@ import java.util.logging.Logger;
 import Constant.QueryConstants;
 import Helper.QueryHelper;
 import Helper.PrintHelper;
+import Helper.ConnectionHelper;
 import Processors.Query;
 
 /**
  * 
  * Processes CheapestConnection query
- *  
+ * 
  * @author Kanchana Mohan
  */
 public class CheapestConnection extends Query {
@@ -41,13 +42,15 @@ public class CheapestConnection extends Query {
 	}
 
 	public String getCheapestConnection(Map<String, String> conPriceMap, String connNames, String strSource, String strDestination) {
+		
 		String methodName = "getCheapestConnection";
 		LOGGER.entering(CLASS_NAME, methodName);
 		String cheapestConnect = "";
 		QueryHelper queryHelper = new QueryHelper();
 		Map<String, Integer> unSortedMap = new HashMap<String, Integer>();
 		try {
-			List<List<String>> routes = queryHelper.getAllConnections(connNames, strSource, strDestination);
+			ConnectionHelper search = new ConnectionHelper();
+			List<List<String>> routes = search.getAllConnections(connNames, strSource, strDestination);
 			if (null != routes) {
 				for (List<String> route : routes) {
 					String connectionPath = "";
@@ -58,9 +61,12 @@ public class CheapestConnection extends Query {
 							connectionPath = connectionPath + "-" + route.get(i);
 						}
 					}
+         
 					String price = queryHelper.getConnectionPrice(conPriceMap, connectionPath);
+
 					unSortedMap.put(connectionPath, new Integer(price));
 				}
+				
 				Map<String, Integer> sortedMapAsc = queryHelper.getSortedConncetion(unSortedMap);
 				if (null != sortedMapAsc) {
 					String cheapestWay = "";

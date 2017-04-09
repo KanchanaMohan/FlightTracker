@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import Helper.QueryHelper;
 import Helper.PrintHelper;
+import Helper.ConnectionHelper;
 import Processors.Query;
 
 /**
@@ -59,7 +60,9 @@ public class AllConnections extends Query {
 		QueryHelper queryHelper = new QueryHelper();
 		Map<String, Integer> unSortedMap = new HashMap<String, Integer>();
 		try {
-			List<List<String>> routes = queryHelper.getAllConnections(connNames, strSource, strDestination);
+			//Search search = new Search(connNames, strSource, strDestination);
+			ConnectionHelper search = new ConnectionHelper();
+			List<List<String>> routes = search.getAllConnections(connNames, strSource, strDestination);
 
 			if (null != routes) {
 				for (List<String> route : routes) {
@@ -75,12 +78,19 @@ public class AllConnections extends Query {
 					unSortedMap.put(connectionPath, new Integer(price));
 				}
 				Map<String, Integer> sortedMapAsc = queryHelper.getSortedConncetion(unSortedMap);
+				int i=0;
 				for (Map.Entry<String, Integer> entry : sortedMapAsc.entrySet()) {
 					Integer connectionPrice = entry.getValue();
 					if (connectionPrice < amount) {
-						allRoutes = allRoutes + entry.getKey() + "-" + connectionPrice + ",";
+						if(i != sortedMapAsc.size()-1){
+							allRoutes = allRoutes + entry.getKey() + "-" + connectionPrice + ",";
+						}
+						else{
+							allRoutes = allRoutes + entry.getKey() + "-" + connectionPrice ;
+						}
+						
 					}
-
+                    i = i+1;
 				}
 
 			} else {

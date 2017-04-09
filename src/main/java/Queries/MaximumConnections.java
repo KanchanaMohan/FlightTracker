@@ -6,8 +6,10 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import Constant.QueryConstants;
+import Helper.MaximumConnectionsHelper;
 import Helper.QueryHelper;
 import Helper.PrintHelper;
+import Helper.ConnectionHelper;
 import Processors.Query;
 
 /**
@@ -46,7 +48,8 @@ public class MaximumConnections extends Query {
 		QueryHelper queryHelper = new QueryHelper();
 		Map<String, Integer> unSortedMap = new HashMap<String, Integer>();
 		try {
-			List<List<String>> routes = queryHelper.getAllConnections(connNames, strSource, strDestination);
+			MaximumConnectionsHelper stopsCounterHelper = new MaximumConnectionsHelper();
+			List<List<String>> routes = stopsCounterHelper.getAllConnections(connNames, strSource, strDestination,count);
 			Integer numConnections = 0;
 			Integer stopsCount = 0;
 			if (null != routes) {
@@ -57,7 +60,7 @@ public class MaximumConnections extends Query {
 							stopsCount = stopsCount + 1;
 						}
 					}
-					if (stopsCount > 0 && stopsCount <= count) {
+					if (stopsCount >= 0 && stopsCount <= count) {
 						numConnections = numConnections + 1;
 						numRoutes = numConnections.toString();
 					}

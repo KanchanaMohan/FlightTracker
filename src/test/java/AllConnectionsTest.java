@@ -10,6 +10,7 @@ public class AllConnectionsTest extends TestCase {
 
 	public void testAllConnections() {
 		try {
+			String methodName = "testAllConnections";
 			Integer amount = 170;
 			int quesNo = 1;
 			String source = "NUE";
@@ -23,7 +24,8 @@ public class AllConnectionsTest extends TestCase {
 			conPriceMap.put("FRA-LHR", "27");
 			conPriceMap.put("LHR-NUE", "23");
 			String connNames = "NUE-FRA-43, NUE-AMS-67, FRA-AMS-17, FRA-LHR-27, LHR-NUE-23";
-			allConnections.process(conPriceMap, connNames, quesNo);
+			String connections = allConnections.getConnections(conPriceMap,connNames,source,destination);
+			assertEquals("Error in"+methodName+"in"+AllConnectionsTest.class.getName(),"NUE-FRA-LHR-70",connections);
 		} catch (Exception e) {
 			fail("Exception should not be thrown");
 		}

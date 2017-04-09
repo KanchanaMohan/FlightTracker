@@ -6,8 +6,11 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import Constant.QueryConstants;
+import Helper.ExactConnectionsHelper;
 import Helper.QueryHelper;
 import Helper.PrintHelper;
+import Helper.ConnectionHelper;
+import Helper.MaximumConnectionsHelper;
 import Processors.Query;
 
 /**
@@ -47,7 +50,9 @@ public class ExactConnections extends Query {
 		QueryHelper queryHelper = new QueryHelper();
 		Map<String, Integer> unSortedMap = new HashMap<String, Integer>();
 		try {
-			List<List<String>> routes = queryHelper.getAllConnections(connNames, strSource, strDestination);
+			
+			ExactConnectionsHelper exactConnectionsHelper = new ExactConnectionsHelper();
+			List<List<String>> routes = exactConnectionsHelper.getAllConnections(connNames, strSource, strDestination,count);
 			Integer numConnections = 0;
 			Integer stopsCount = 0;
 			if (null != routes) {
